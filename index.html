@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Service Request Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        input, button {
+            padding: 8px;
+            width: 300px;
+        }
+        button {
+            width: 100px;
+        }
+        ul {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Submit Your Service Request</h1>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul>
+      {% for msg in messages %}
+        <li>{{ msg }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+<form method="POST" action="{{ url_for('index') }}">
+    <label>Name:</label><br>
+    <input type="text" name="name" required><br><br>
+
+    <label>Phone Number:</label><br>
+    <input type="tel" name="phone" required><br><br>
+
+    <label>Service:</label><br>
+    <input type="text" name="service" required><br><br>
+
+    <button type="submit">Submit</button>
+</form>
+
+</body>
+</html>
